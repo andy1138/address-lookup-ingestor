@@ -71,6 +71,7 @@ trait FtpDownloader {
         val totalToDownload = files.size
 
         val subFolderName: String = folderName(oFiles).getOrElse("Unknown")
+        println(s">>downloadFiles $subFolderName --  $oFiles $osSource " )
 
         val totalThatWereDownloaded = oFiles.foldLeft(0) {
           case (count, f) =>
@@ -93,6 +94,7 @@ trait FtpDownloader {
 
   def folderName(osfiles: List[OsFile]): Option[String] = Try {
     val f = osfiles.head.name
+    println(s">>>folderName = $f")
     if (f.endsWith(".zip") && f.startsWith("AddressBasePremium")) {
       Some(f.split("_")(2))
     }

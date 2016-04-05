@@ -72,6 +72,7 @@ trait OrdnanceSurveyController extends Controller {
                 out.write("\n".getBytes)
                 out.flush()
               }
+              println("ftp download: " + tmpZipfilesHome + "/" + subFolder)
               val result = Extractor.extract(new File(tmpZipfilesHome + "/" + subFolder), csvOut)
 
             case Failure(err) =>

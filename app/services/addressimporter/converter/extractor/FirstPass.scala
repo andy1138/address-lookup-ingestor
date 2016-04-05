@@ -61,12 +61,12 @@ object FirstPass {
 
 
   object FirstPassLine {
-    def processLine(fd: ForwardData, csvLine: Array[String], out: CSVOutput): ForwardData =
+    def processLine(fd: ForwardData, csvLine: Array[String], out: CSVOutput): ForwardData = {
       csvLine(OSCsv.RecordIdentifier_idx) match {
 
-        case OSHeader.RecordId =>
-          OSCsv.csvFormat = if (csvLine(OSHeader.Version_Idx) == "1.0") 1 else 2
-          fd // no change
+//        case OSHeader.RecordId =>
+//          OSCsv.csvFormat = if (csvLine(OSHeader.Version_Idx) == "1.0") 1 else 2
+//          fd // no change
 
         case OSBlpu.RecordId if OSBlpu.isSmallPostcode(csvLine) =>
           val blpu = OSBlpu(csvLine)
@@ -100,7 +100,7 @@ object FirstPass {
 
         case _ => fd
       }
-
+    }
   }
 
 }

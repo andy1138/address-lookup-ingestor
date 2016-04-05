@@ -88,6 +88,7 @@ object SecondPass {
 
 
   def secondPass(zipFiles: Vector[ZipFile], fd: ForwardData, out: (CSVLine) => Unit): Try[HashMap[Long, Blpu]] = Try {
+    println(">>Start 2nd Pass")
     zipFiles.foldLeft(fd.blpu) {
       case (remainingBLPU0, file) =>
         LoadZip.zipReader(file) {

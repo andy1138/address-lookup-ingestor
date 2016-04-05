@@ -36,6 +36,7 @@ import sbtassembly.AssemblyPlugin.defaultShellScript
     .settings(scalaVersion := "2.11.7")
     .settings(publishingSettings: _*)
     .settings(defaultSettings(): _*)
+      .settings( javaOptions in run += "-Xmx8G")
     .settings(
       targetJvm := "jvm-1.8",
 //      shellPrompt := ShellPrompt(appVersion),

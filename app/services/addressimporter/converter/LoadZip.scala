@@ -34,6 +34,7 @@ object LoadZip {
 
   def zipReader[T](zipFile: ZipFile)(f: (Iterator[Array[String]]) => T): Try[T] = {
     Try {
+      println("File: "+ zipFile)
       val entryOp = zipFile.getEntries.asScala.toList.headOption
 
       val result = entryOp.fold(throw EmptyFileException("Empty file")) { entry =>
@@ -45,6 +46,7 @@ object LoadZip {
         val result = f(it)
 
         stream.close()
+        zipFile.close()
         result
       }
       result
